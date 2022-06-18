@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   get '/urls', to: 'main#urls'
 
 
-  
   get '/:short_url', to: 'main#redirect'
 end
