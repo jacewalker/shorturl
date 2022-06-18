@@ -32,7 +32,12 @@ class MainController < ApplicationController
   end
 
   def result
-    puts $tiny_url
+  end
+
+  def urls
+    if ShortUrl.first.nil?
+      redirect_to root_path, notice: 'No URLs have been shortened yet'
+    end
   end
 
 

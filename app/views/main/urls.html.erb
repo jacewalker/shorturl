@@ -1,0 +1,63 @@
+<div class="px-72 py-2 mx-auto text-white">
+
+    <div class="overflow-x-auto">
+    <table class="min-w-full text-sm divide-y divide-white">
+        <thead>
+        <tr>
+            <th class="p-4 font-medium text-left text-white whitespace-nowrap">
+            </th>
+            <th class="p-4 font-medium text-left text-white whitespace-nowrap">
+            <div class="flex items-center">
+                URL
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 ml-1.5 text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                >
+                </svg>
+            </div>
+            </th>
+            <th class="p-4 font-medium text-left text-white whitespace-nowrap">
+            <div class="flex items-center">
+                Target
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 ml-1.5 text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                >
+                </svg>
+            </div>
+            </th>
+            <th class="p-4 font-medium text-left text-white whitespace-nowrap">
+            <div class="flex items-center">
+                Created
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 ml-1.5 text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                >
+                </svg>
+            </div>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody class="divide-y divide-white">
+            
+            <%# for each item in ShortUrl database, output the target_url %>
+            <% ShortUrl.all.each do | x | %>
+            <tr>
+                <td class="p-4 font-medium text-white whitespace-nowrap">EDIT</td>
+                <td class="p-4 font-medium text-white whitespace-nowrap"><%= root_url + x.shortened_url %> </td>
+                <td class="p-4 text-white whitespace-nowrap"><%= x.target_url %> </td>
+                <td class="p-4 text-white whitespace-nowrap"><%= x.created_at.strftime("%B %d, %Y") %> </td>
+
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+</div>

@@ -1,1 +1,7 @@
-http://localhost:3000/<%= $tiny_url %>
+
+<div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 text-white">
+    <div class="block mx-auto px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg w-64 text-center">
+        <a id="shorturl" href=<%= root_url + $tiny_url%>> <%= root_url + $tiny_url%>  </a>
+        <%= link_to "❌", root_path, class: "ml-1" %>
+    </div>
+</div>
