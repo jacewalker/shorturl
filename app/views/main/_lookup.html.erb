@@ -1,0 +1,4 @@
+<%= form_with(:url => '/shorten', :method => :post) do |f| %>
+  <%= f.text_field :url, :placeholder => 'Enter a URL to shorten' %>
+  <%= f.submit 'Shorten' %>
+<% end %>

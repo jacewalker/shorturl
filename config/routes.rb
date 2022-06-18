@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'main#index'
+  
+  get 'main/index'
+  get '/result', to: 'main#result'
+  post '/shorten', to: 'main#shorten'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+
+  get '/:short_url', to: 'main#redirect'
 end
