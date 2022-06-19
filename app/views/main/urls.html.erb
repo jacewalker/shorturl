@@ -61,7 +61,7 @@
             
             <% ShortUrl.all.each do | x | %>
             <tr>
-                <td class="p-4 font-medium text-white whitespace-nowrap">EDIT</td>
+                <td class="p-4 font-medium text-white whitespace-nowrap"></td>
                 <td class="p-4 font-medium text-white whitespace-nowrap"><%= root_url + x.shortened_url %> </td>
                 <td class="p-4 text-white whitespace-nowrap"><%= x.target_url %> </td>
                 <td class="p-4 text-white whitespace-nowrap"><%= x.clicks %> </td>
