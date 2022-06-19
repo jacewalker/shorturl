@@ -30,10 +30,11 @@ services:
       - .:/app
     hostname: short-url-web
     restart: always
-    networks:
-      default:
-        external:
-          name: myNetwork
+    
+networks:
+  default:
+    external:
+      name: myNetwork
 
 volumes:
   dbdata:
