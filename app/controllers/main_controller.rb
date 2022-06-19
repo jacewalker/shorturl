@@ -7,15 +7,18 @@ class MainController < ApplicationController
     target = params[:url ]
 
     if target =~ /^https?:\/\//
-      puts 'URL is formatted correctly'
+      logger.debug '[LOGGER] URL is formatted correctly'
     else
       target = "https://#{target}"
+      logger.info "[LOGGER] URL is not formatted correctly, adding https://"
     end
 
     if ShortUrl.exists?(target_url: target)
       short_link = ShortUrl.find_by(target_url: target).shortened_url
+      logger.info "[LOGGER] URL already exists, exiting with #{short_link}"
     else
-      short_link = ShortUrl.create(target_url: target, shortened_url: SecureRandom.urlsafe_base64(3), clicks: 0)
+      new_short_link = ShortUrl.create(target_url: target, shortened_url: SecureRandom.urlsafe_base64(3), clicks: 0)
+      logger.info "[LOGGER] URL does not exist, creating new short link #{new_short_link.shortened_url}"
     end
 
     $tiny_url = ShortUrl.find_by(target_url: target).shortened_url
@@ -24,10 +27,14 @@ class MainController < ApplicationController
 
   def redirect
     short_url = params[:short_url]
-    target = ShortUrl.find_by(shortened_url: short_url)
-    target.clicks += 1
-    target.save
-    redirect_to target.target_url, allow_other_host: true
+    if target = ShortUrl.find_by(shortened_url: short_url)
+      target.clicks += 1
+      target.save
+      redirect_to target.target_url, allow_other_host: true
+    else
+      logger.warn "Attempt to redirect to non-existent short URL #{short_url}"
+      redirect_to root_path, notice: 'Invalid URL'
+    end
   end
 
   def lookup
