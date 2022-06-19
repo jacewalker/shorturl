@@ -1,11 +1,11 @@
-<div class="px-72 py-2 mx-auto text-white">
+<div class="max-w-screen-lg mx-auto py-2 mx-auto text-white bg-gray-800 border-solid border-2 border-sky-800">
 
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto p-2">
     <table class="min-w-full text-sm divide-y divide-white">
         <thead>
         <tr>
-            <th class="p-4 font-medium text-left text-white whitespace-nowrap">
-            </th>
+            <%# <th class="p-4 font-medium text-left text-white whitespace-nowrap">
+            </th> %>
             <th class="p-4 font-medium text-left text-white whitespace-nowrap">
             <div class="flex items-center">
                 URL
@@ -61,11 +61,11 @@
             
             <% ShortUrl.all.each do | x | %>
             <tr>
-                <td class="p-4 font-medium text-white whitespace-nowrap"></td>
-                <td class="p-4 font-medium text-white whitespace-nowrap"><%= root_url + x.shortened_url %> </td>
-                <td class="p-4 text-white whitespace-nowrap"><%= x.target_url %> </td>
-                <td class="p-4 text-white whitespace-nowrap"><%= x.clicks %> </td>
-                <td class="p-4 text-white whitespace-nowrap"><%= x.created_at.strftime("%B %d, %Y") %> </td>
+                <%# <td class="p-3 font-medium text-white whitespace-nowrap"></td> %>
+                <td class="p-3 font-medium text-white whitespace-nowrap"><%= root_url + x.shortened_url %> </td>
+                <td class="p-3 text-white whitespace-wrap"><%= x.target_url %> </td>
+                <td class="p-3 text-white whitespace-nowrap"><%= x.clicks %> </td>
+                <td class="p-3 text-white whitespace-nowrap"><%= x.created_at.strftime("%B %d, %Y") %> </td>
 
             </tr>
             <% end %>
