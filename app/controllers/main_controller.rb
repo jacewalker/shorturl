@@ -4,7 +4,7 @@ class MainController < ApplicationController
   end
 
   def shorten
-    target = params[:url]
+    target = params[:url ]
 
     if target =~ /^https?:\/\//
       puts 'URL is formatted correctly'
@@ -15,7 +15,7 @@ class MainController < ApplicationController
     if ShortUrl.exists?(target_url: target)
       short_link = ShortUrl.find_by(target_url: target).shortened_url
     else
-      short_link = ShortUrl.create(target_url: target, shortened_url: SecureRandom.urlsafe_base64(3))
+      short_link = ShortUrl.create(target_url: target, shortened_url: SecureRandom.urlsafe_base64(3), clicks: 0)
     end
 
     $tiny_url = ShortUrl.find_by(target_url: target).shortened_url
@@ -25,6 +25,8 @@ class MainController < ApplicationController
   def redirect
     short_url = params[:short_url]
     target = ShortUrl.find_by(shortened_url: short_url)
+    target.clicks += 1
+    target.save
     redirect_to target.target_url, allow_other_host: true
   end
 
