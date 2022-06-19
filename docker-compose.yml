@@ -33,3 +33,8 @@ services:
 
 volumes:
   dbdata:
+
+  networks:
+  default:
+    external:
+      name: myNetwork
