@@ -7,7 +7,7 @@ class MainController < ApplicationController
     target = params[:url]
 
     if target =~ /^https?:\/\//
-      Logger.info 'URL is formatted correctly'
+      puts 'URL is formatted correctly'
     else
       target = "https://#{target}"
     end
